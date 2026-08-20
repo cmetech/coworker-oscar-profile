@@ -38,8 +38,8 @@ try {
     if ($LASTEXITCODE -ne 0) {
         throw "Installed profile could not be inspected. Output:`n$info"
     }
-    if ($info -notmatch "0\.1\.0") {
-        throw "Installed profile did not report distribution version 0.1.0. Output:`n$info"
+    if ($info -notmatch "0\.2\.0") {
+        throw "Installed profile did not report distribution version 0.2.0. Output:`n$info"
     }
 
     Write-Host "Install and profile-info verification passed."

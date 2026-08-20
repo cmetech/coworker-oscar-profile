@@ -49,9 +49,9 @@ class DistributionContractTests(unittest.TestCase):
         parsed = yaml.safe_load(manifest)
         self.assertIsInstance(parsed, dict)
         self.assertEqual("oscar", parsed["name"])
-        self.assertEqual("0.1.0", parsed["version"])
+        self.assertEqual("0.2.0", parsed["version"])
         self.assertRegex(manifest, r"(?m)^name:\s*oscar\s*$")
-        self.assertRegex(manifest, r"(?m)^version:\s*0\.1\.0\s*$")
+        self.assertRegex(manifest, r"(?m)^version:\s*0\.2\.0\s*$")
         self.assertIn("distribution_owned:", manifest)
         for owned in ("SOUL.md", "config.yaml", "skills/", "README.md"):
             self.assertIn(f"  - {owned}", manifest)
@@ -85,14 +85,14 @@ class DistributionContractTests(unittest.TestCase):
 
 class SkillContractTests(unittest.TestCase):
     def test_required_skill_set_exists(self) -> None:
-        skills_dir = REPO / "skills"
+        skills_dir = REPO / "skills" / "oscar"
         actual = {path.name for path in skills_dir.iterdir() if path.is_dir()}
         self.assertEqual(EXPECTED_SKILLS, actual)
 
     def test_each_skill_has_discoverable_frontmatter_and_safety_contract(self) -> None:
         for name in sorted(EXPECTED_SKILLS):
             with self.subTest(skill=name):
-                text = read(f"skills/{name}/SKILL.md")
+                text = read(f"skills/oscar/{name}/SKILL.md")
                 metadata = frontmatter(text)
                 self.assertEqual(name, metadata.get("name"))
                 self.assertTrue(metadata.get("description", "").startswith("Use when"))
@@ -101,7 +101,7 @@ class SkillContractTests(unittest.TestCase):
 
     def test_scaffold_contains_no_unfinished_markers(self) -> None:
         marker = re.compile(r"\b(?:TODO|TBD|FIXME|PLACEHOLDER)\b", re.IGNORECASE)
-        for skill_file in (REPO / "skills").glob("*/SKILL.md"):
+        for skill_file in (REPO / "skills" / "oscar").glob("*/SKILL.md"):
             with self.subTest(skill=skill_file.parent.name):
                 self.assertIsNone(marker.search(skill_file.read_text(encoding="utf-8")))
 
@@ -115,6 +115,10 @@ class OperatorExperienceTests(unittest.TestCase):
         self.assertIn("loop24 profile delete oscar", readme)
         self.assertIn(r"%LOCALAPPDATA%\loop24\profiles\oscar", readme)
         self.assertIn("Test-ProfileInstall.ps1", readme)
+        self.assertIn(
+            "cmetech/coworker-oscar-profile/skills/oscar/oscar-vmalert-rules",
+            readme,
+        )
 
     def test_windows_smoke_test_uses_only_disposable_profile(self) -> None:
         script = read("scripts/Test-ProfileInstall.ps1")

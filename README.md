@@ -2,7 +2,7 @@
 
 An installable OSCAR administration expert for LOOP24 Coworker. The repository is both a complete profile distribution and a GitHub skills tap.
 
-Version `0.1.0` is an installation-test scaffold. It provides the profile behavior contract and focused administration skills; it does not connect to or modify an OSCAR environment by itself.
+Version `0.2.0` groups the profile-provided skills under the OSCAR category in LOOP24 Desktop. It provides the profile behavior contract and focused administration skills; it does not connect to or modify an OSCAR environment by itself.
 
 ## What it provides
 
@@ -52,7 +52,7 @@ loop24 profile update oscar
 loop24 profile info oscar
 ```
 
-LOOP24 preserves user configuration on update unless the operator explicitly requests a configuration overwrite.
+LOOP24 preserves user configuration on update unless the operator explicitly requests a configuration overwrite. Updating to `0.2.0` replaces the distribution-owned `skills/` tree so the OSCAR skills appear once under the **OSCAR** category.
 
 ## Install one skill instead
 
@@ -60,8 +60,8 @@ The repository follows the GitHub tap layout:
 
 ```text
 loop24 skills tap add cmetech/coworker-oscar-profile
-loop24 skills inspect cmetech/coworker-oscar-profile/skills/oscar-vmalert-rules
-loop24 skills install cmetech/coworker-oscar-profile/skills/oscar-vmalert-rules
+loop24 skills inspect cmetech/coworker-oscar-profile/skills/oscar/oscar-vmalert-rules
+loop24 skills install cmetech/coworker-oscar-profile/skills/oscar/oscar-vmalert-rules
 ```
 
 ## Removal warning
