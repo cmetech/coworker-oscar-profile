@@ -1,0 +1,18 @@
+name: oscar
+version: 0.1.0
+description: "OSCAR administration expert for evidence-grounded Q&A, operations, and artifact authoring"
+hermes_requires: ">=0.12.0"
+author: "CMETech"
+license: "Proprietary"
+
+env_requires:
+  - name: GLEAN_API_TOKEN
+    description: "Optional token for the host-provided Glean MCP integration"
+    required: false
+    default: ""
+
+distribution_owned:
+  - SOUL.md
+  - config.yaml
+  - skills/
+  - README.md

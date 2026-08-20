@@ -1,0 +1,39 @@
+# Credentials and secrets
+.env
+.env.EXAMPLE
+auth.json
+
+# Runtime state and user data
+state.db*
+hermes_state.db
+response_store.db*
+gateway.pid
+gateway_state.json
+processes.json
+auth.lock
+active_profile
+.update_check
+/memories/
+/sessions/
+/logs/
+/plans/
+/workspace/
+/home/
+/local/
+
+# Generated caches and backups
+*_cache/
+cache/
+checkpoints/
+sandboxes/
+backups/
+browser_screenshots/
+
+# Local development
+.venv/
+venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+*.pyc
+.DS_Store
