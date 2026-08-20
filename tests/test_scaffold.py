@@ -109,14 +109,16 @@ class SkillContractTests(unittest.TestCase):
 class OperatorExperienceTests(unittest.TestCase):
     def test_readme_documents_remote_windows_lifecycle(self) -> None:
         readme = read("README.md")
-        self.assertIn("hermes profile install github.com/cmetech/coworker-oscar-profile", readme)
-        self.assertIn("hermes profile info oscar", readme)
-        self.assertIn("hermes profile update oscar", readme)
-        self.assertIn("hermes profile delete oscar", readme)
+        self.assertIn("loop24 profile install github.com/cmetech/coworker-oscar-profile", readme)
+        self.assertIn("loop24 profile info oscar", readme)
+        self.assertIn("loop24 profile update oscar", readme)
+        self.assertIn("loop24 profile delete oscar", readme)
+        self.assertIn(r"%LOCALAPPDATA%\loop24\profiles\oscar", readme)
         self.assertIn("Test-ProfileInstall.ps1", readme)
 
     def test_windows_smoke_test_uses_only_disposable_profile(self) -> None:
         script = read("scripts/Test-ProfileInstall.ps1")
+        self.assertIn("Get-Command loop24", script)
         self.assertIn("oscar-install-smoke", script)
         self.assertIn("--name", script)
         self.assertIn("profile info", script)
