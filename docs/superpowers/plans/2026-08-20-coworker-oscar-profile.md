@@ -114,5 +114,5 @@
 
 - [x] Run structural tests, all skill validators, secret scans, manifest parsing through Hermes, and a local temporary-home install/info/delete test.
 - [x] Review `git diff --check`, repository status, and the complete tracked-file list.
-- [ ] Commit the scaffold, create the private GitHub repository, and push `main` plus tag `v0.1.0`.
-- [ ] Verify remote visibility, default branch, commit SHA, and tag through GitHub.
+- [x] Commit the scaffold, create the private GitHub repository, and push `main` plus tag `v0.1.0`.
+- [x] Verify remote visibility, default branch, commit SHA, and tag through GitHub.
